@@ -28,6 +28,13 @@ jobs:
       run: |
         flake8 src/
 
+    - name: Create dummy dataset for CI
+      run: |
+        mkdir -p data
+        echo "patient_id,age,bmi,blood_pressure,cholesterol,glucose,smoker,target" > data/dataset.csv
+        echo "P001,45,27.3,130,210,98,yes,1" >> data/dataset.csv
+        echo "P002,38,24.1,118,185,90,no,0" >> data/dataset.csv
+
     - name: Run training script
       run: |
         python src/train.py

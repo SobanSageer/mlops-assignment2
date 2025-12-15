@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pandas scikit-learn joblib flake8
+        pip install pandas scikit-learn joblib flake8 pytest
 
     - name: Lint code
       run: |
@@ -40,3 +40,7 @@ jobs:
     - name: Run training script
       run: |
         python src/train.py
+
+    - name: Run unit tests
+      run: |
+        pytest tests/ -v
